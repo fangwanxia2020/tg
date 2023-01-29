@@ -1,0 +1,122 @@
+export const columns = [{
+  label: "测试日期", //字段名
+  prop: "testDate", //字段key
+  type: 'date',
+  width: 160,
+  require: true,
+}, {
+  label: "轧布日期",
+  prop: "productDate",
+  type: 'date',
+  width: 160,
+  require: true,
+}, {
+  label: "坯布名称",
+  prop: "goodsName",
+  width: 160,
+  disabled: true,
+  require: true,
+}, {
+  label: "批号",
+  prop: "shipmentNo",
+  width: 100,
+}, {
+  label: "色号/颜色",
+  prop: "colorName",
+  type: 'select',
+  width: 120,
+  // require:true,
+}, {
+  label: "成衣加工点",
+  prop: "processingPoint",
+  width: 100,
+}, {
+  label: "合约号",
+  prop: "contractNo",
+  width: 100,
+}, {
+  label: "门幅（cm）",
+  prop: "sizeName",
+  type: 'select',
+  width: 120,
+  // require:true,
+}, {
+  label: "直向",
+  prop: "straight",
+  columns: [{
+    label: "%",
+    prop: "straight",
+    width: 100
+  }, {
+    label: "前",
+    prop: "straightBefore",
+    width: 100
+  }, {
+    label: "后",
+    prop: "straightAfter",
+    width: 100
+  }, ]
+}, {
+  label: "横向",
+  prop: "transverse",
+  columns: [{
+    label: "%",
+    prop: "transverse",
+    width: 100
+  }, {
+    label: "前",
+    prop: "transverseBefore",
+    width: 100
+  }, {
+    label: "后",
+    prop: "transverseAfter",
+    width: 100
+  }]
+}, {
+  label: "实测门幅(cm)",
+  prop: "measuredWidth",
+  width: 100,
+  type: 'number'
+}, {
+  label: "自然克重(g/㎡)",
+  prop: "naturals",
+  width: 100,
+  type: 'number'
+}, {
+  label: "干燥克重(g/㎡)",
+  prop: "dry",
+  width: 100,
+  type: 'number'
+}, {
+  label: "强力(N)",
+  prop: "strong",
+  width: 100,
+  type: 'number'
+}, {
+  label: "甲醛(PPm)",
+  prop: "formaldehyde",
+  width: 100,
+  type: 'number'
+}, {
+  label: "PH值",
+  prop: "ph",
+  width: 100,
+  type: 'number'
+}, {
+  label: "扭率(%)",
+  prop: "twistRate",
+  width: 250,
+  type: 'number'
+}, {
+  label: "扭率(%)",
+  prop: "twistRatee",
+  hidden: true
+}, {
+  label: "扭率(%)",
+  prop: "twistRates",
+  hidden: true
+}, {
+  label: "货号",
+  prop: "goodsCode",
+  width: 100,
+}, ]

@@ -1,0 +1,829 @@
+import {
+  getMaterialTypeAndCatalogn
+}
+from "@/api/matter/encoded.js"
+import {
+  selectDictLabel,
+  getDictMultiple,
+}
+from '@/utils/tool'
+const columns = async () => {
+  // const category = await getMaterialTypeAndCatalogn()
+  const {
+    goods_main_big_type
+  } = await getDictMultiple(['goods_main_big_type'])
+  const columns = [{
+    label: "物料类型",
+    prop: "bigTypeId",
+    baseSearch: false,
+    formFormat: {
+      type: "select",
+      icon: "icon-select",
+      name: "下拉选择",
+      options: {
+        defaultValue: null,
+        multiple: false,
+        disabled: false,
+        clearable: false,
+        placeholder: "请选择",
+        required: false,
+        showLabel: true,
+        width: "100%",
+        options: [],
+        filterable: false,
+        optionDataType: 2,
+        interfaceMethod: "/system/system/dict/data/dictType/goods_main_big_type",
+        interfaceParam: "{}",
+        interfaceId: "",
+        "resList": "data",
+        "interfaceType": "get",
+        tipFont: "",
+        dictKey: "",
+        props: {
+          "value": "dictValue",
+          "label": "dictLabel"
+        },
+      },
+      key: 1608804132002,
+      model: "bigTypeId",
+      rules: [],
+    },
+    formatter(val) {
+      return selectDictLabel(goods_main_big_type, val) || '-'
+    },
+  }, {
+    label: "物料类别",
+    prop: "categoryId",
+    baseSearch: true,
+    width: "80px",
+    formFormat: {
+      type: "select",
+      icon: "icon-select",
+      name: "下拉选择",
+      flag: 0,
+      options: {
+        defaultValue: "",
+        multiple: false,
+        disabled: false,
+        clearable: false,
+        placeholder: "请选择",
+        required: false,
+        showLabel: true,
+        width: "100%",
+        filterable: false,
+        optionDataType: 2,
+        interfaceMethod: "/system/materialType/getMaterialTypeAndCatalog",
+        interfaceParam: '{"pageNum":"1","pageSize":"999"}',
+        interfaceId: "get",
+        tipFont: "",
+        dictKey: "",
+        resList: "data.materialCategoryVoList",
+        props: {
+          value: "categoryId",
+          label: "categoryName",
+        },
+      },
+      key: 1608804132000,
+      model: "categoryId",
+      rules: [],
+    },
+    formatter: (val, data) => {
+      return data.categoryName
+    },
+  }, {
+    label: "物料编号",
+    prop: "goodsCode",
+    type: "slot",
+    baseSearch: false,
+  }, {
+    label: "物料名称",
+    prop: "goodsName",
+    baseSearch: true,
+  }, {
+    label: "原始货号",
+    prop: "originalNo",
+    baseSearch: true,
+    type: "slot",
+  }, {
+    label: "原始名称",
+    prop: "originalName",
+  }, {
+    label: "单位",
+    prop: "unit",
+    width: "60px"
+  }, {
+    label: "物料组",
+    prop: "goodsGroup",
+    baseSearch: false,
+    width: "80px"
+  }, {
+    label: "颜色规则",
+    prop: "colorRuleName",
+  }, {
+    label: "尺码规则",
+    prop: "sizeRuleName",
+  }, {
+    label: "修改时间",
+    prop: "updateTime",
+    type: "datetime",
+  }, {
+    label: "操作员",
+    prop: "operatingMan",
+  }, ]
+  return columns
+}
+const BOMForm = {
+  "list": [{
+    "type": "title",
+    "flag": 0,
+    "icon": "icon-wenzishezhi-",
+    "name": "基本信息",
+    "options": {
+      "width": "100%",
+      "defaultValue": ""
+    },
+    "key": 1647830591000,
+    "model": "title_1647830591000",
+    "rules": []
+  }, {
+    "type": "grid",
+    "icon": "icon-grid-",
+    "name": "栅格布局",
+    "columns": [{
+      "span": 8,
+      "list": [{
+        "type": "input",
+        "icon": "icon-input",
+        "name": "物料类型",
+        "flag": 0,
+        "options": {
+          "clearable": false,
+          "showText": false,
+          "width": "100%",
+          "defaultValue": "",
+          "required": false,
+          "dataType": "string",
+          "maxlength": "",
+          "minlength": "",
+          "validator": "",
+          "pattern": "",
+          "patternTips": "",
+          "placeholder": "",
+          "disabled": true,
+          "hide": false,
+          "tipFont": "",
+          "mouseTips": "",
+          "borderRadius": "no"
+        },
+        "key": "1634284535000_35549",
+        "model": "bigTypeName",
+        "rules": [{
+          "type": "string",
+          "message": "请输入字符串类型数据"
+        }]
+      }]
+    }, {
+      "span": 8,
+      "list": [{
+        "type": "input",
+        "icon": "icon-input",
+        "name": "物料类别",
+        "flag": 0,
+        "options": {
+          "clearable": false,
+          "showText": false,
+          "width": "100%",
+          "defaultValue": "",
+          "required": false,
+          "dataType": "string",
+          "maxlength": "",
+          "minlength": "",
+          "validator": "",
+          "pattern": "",
+          "patternTips": "",
+          "placeholder": "",
+          "disabled": true,
+          "hide": false,
+          "tipFont": "",
+          "mouseTips": "",
+          "borderRadius": "no"
+        },
+        "key": "1634284534000_79532",
+        "model": "categoryName",
+        "rules": [{
+          "type": "string",
+          "message": "请输入字符串类型数据"
+        }]
+      }]
+    }, {
+      "span": 8,
+      "list": [{
+        "type": "input",
+        "icon": "icon-input",
+        "name": "物料编号",
+        "flag": 0,
+        "options": {
+          "clearable": false,
+          "showText": false,
+          "width": "100%",
+          "defaultValue": "",
+          "required": false,
+          "dataType": "string",
+          "maxlength": "",
+          "minlength": "",
+          "validator": "",
+          "pattern": "",
+          "patternTips": "",
+          "placeholder": "",
+          "disabled": true,
+          "hide": false,
+          "tipFont": "",
+          "mouseTips": "",
+          "borderRadius": "no"
+        },
+        "key": "1634284536000_60186",
+        "model": "goodsCode",
+        "rules": [{
+          "type": "string",
+          "message": "请输入字符串类型数据"
+        }]
+      }]
+    }],
+    "options": {
+      "gutter": 0,
+      "justify": "start",
+      "align": "top"
+    },
+    "key": 1634284518000,
+    "model": "grid_1634284518000",
+    "rules": []
+  }, {
+    "type": "grid",
+    "icon": "icon-grid-",
+    "name": "栅格布局",
+    "columns": [{
+      "span": 8,
+      "list": [{
+        "type": "input",
+        "icon": "icon-input",
+        "name": "物料名称",
+        "flag": 0,
+        "options": {
+          "clearable": false,
+          "showText": false,
+          "width": "100%",
+          "defaultValue": "",
+          "required": false,
+          "dataType": "string",
+          "maxlength": "",
+          "minlength": "",
+          "validator": "",
+          "pattern": "",
+          "patternTips": "",
+          "placeholder": "",
+          "disabled": true,
+          "hide": false,
+          "tipFont": "",
+          "mouseTips": "",
+          "borderRadius": "no"
+        },
+        "key": "1634284665000_32121",
+        "model": "goodsName",
+        "rules": [{
+          "type": "string",
+          "message": "请输入字符串类型数据"
+        }]
+      }]
+    }, {
+      "span": 8,
+      "list": [{
+        "type": "input",
+        "icon": "icon-input",
+        "name": "原始货号",
+        "flag": 0,
+        "options": {
+          "clearable": false,
+          "showText": false,
+          "width": "100%",
+          "defaultValue": "",
+          "required": false,
+          "dataType": "string",
+          "maxlength": "",
+          "minlength": "",
+          "validator": "",
+          "pattern": "",
+          "patternTips": "",
+          "placeholder": "",
+          "disabled": true,
+          "hide": false,
+          "tipFont": "",
+          "mouseTips": "",
+          "borderRadius": "no"
+        },
+        "key": "1634284667000_26221",
+        "model": "originalNo",
+        "rules": []
+      }]
+    }, {
+      "span": 8,
+      "list": [{
+        "type": "input",
+        "icon": "icon-input",
+        "name": "原始名称",
+        "flag": 0,
+        "options": {
+          "clearable": false,
+          "showText": false,
+          "width": "100%",
+          "defaultValue": "",
+          "required": false,
+          "dataType": "string",
+          "maxlength": "",
+          "minlength": "",
+          "validator": "",
+          "pattern": "",
+          "patternTips": "",
+          "placeholder": "",
+          "disabled": true,
+          "hide": false,
+          "tipFont": "",
+          "mouseTips": "",
+          "borderRadius": "no"
+        },
+        "key": "1634284668000_92123",
+        "model": "originalName",
+        "rules": []
+      }]
+    }],
+    "options": {
+      "gutter": 0,
+      "justify": "start",
+      "align": "top"
+    },
+    "key": 1634284637000,
+    "model": "grid_1634284637000",
+    "rules": []
+  }, {
+    "type": "grid",
+    "icon": "icon-grid-",
+    "name": "栅格布局",
+    "columns": [{
+      "span": 8,
+      "list": [{
+        "type": "select",
+        "icon": "icon-select",
+        "name": "单位",
+        "flag": 0,
+        "options": {
+          "multiple": false,
+          "borderRadius": "no",
+          "defaultValue": "",
+          "disabled": true,
+          "clearable": false,
+          "placeholder": "",
+          "required": false,
+          "showLabel": false,
+          "width": "",
+          "options": [{
+            "value": "选项1"
+          }, {
+            "value": "选项2"
+          }, {
+            "value": "选项3"
+          }],
+          "filterable": false,
+          "optionDataType": 2,
+          "interfaceMethod": "/system/goodsMain/getUnit",
+          "interfaceParam": "{}",
+          "interfaceId": 1649919179000,
+          "resList": "data",
+          "interfaceType": "get",
+          "tipFont": "",
+          "dictKey": "",
+          "props": {
+            "value": "unit",
+            "label": "unit"
+          }
+        },
+        "key": "1649919179000_36995",
+        "model": "unit",
+        "rules": [{
+          "type": "string",
+          "message": "请输入字符串类型数据"
+        }]
+      }]
+    }, {
+      "span": 8,
+      "list": [{
+        "type": "input",
+        "icon": "icon-input",
+        "name": "物料组",
+        "flag": 0,
+        "options": {
+          "clearable": false,
+          "showText": false,
+          "width": "100%",
+          "defaultValue": "",
+          "required": false,
+          "dataType": "string",
+          "maxlength": "",
+          "minlength": "",
+          "validator": "",
+          "pattern": "",
+          "patternTips": "",
+          "placeholder": "",
+          "disabled": true,
+          "hide": false,
+          "tipFont": "",
+          "mouseTips": "",
+          "borderRadius": "no"
+        },
+        "key": "1634284667000_26221",
+        "model": "goodsGroup",
+        "rules": []
+      }]
+    }, {
+      "span": 8,
+      "list": [{
+        "type": "select",
+        "icon": "icon-select",
+        "name": "颜色规则",
+        "flag": 0,
+        "options": {
+          "multiple": false,
+          "borderRadius": "no",
+          "defaultValue": "",
+          "disabled": true,
+          "clearable": false,
+          "placeholder": "",
+          "required": false,
+          "showLabel": false,
+          "width": "",
+          "options": [{
+            "value": "选项1"
+          }, {
+            "value": "选项2"
+          }, {
+            "value": "选项3"
+          }],
+          "filterable": false,
+          "optionDataType": 1,
+          "interfaceMethod": "system/colorRule/list",
+          "interfaceParam": "{}",
+          "interfaceId": 1649919231000,
+          "resList": "data.records",
+          "interfaceType": "get",
+          "tipFont": "",
+          "dictKey": "",
+          "props": {
+            "value": "ruleId",
+            "label": "ruleName"
+          }
+        },
+        "key": "1649919231000_31686",
+        "model": "colorRuleName",
+        //   "rules": [{
+        //     "type": "string",
+        //     "message": "请输入字符串类型数据"
+        //   }]
+      }]
+    }],
+    "options": {
+      "gutter": 0,
+      "justify": "start",
+      "align": "top"
+    },
+    "key": 1634284637100,
+    "model": "grid_1634284637000",
+    "rules": []
+  }, {
+    "type": "grid",
+    "icon": "icon-grid-",
+    "name": "栅格布局",
+    "columns": [{
+      "span": 8,
+      "list": [{
+        "type": "select",
+        "icon": "icon-select",
+        "name": "尺码规格",
+        "flag": 0,
+        "options": {
+          "multiple": false,
+          "borderRadius": "no",
+          "defaultValue": "",
+          "disabled": true,
+          "clearable": false,
+          "placeholder": "",
+          "required": false,
+          "showLabel": false,
+          "width": "",
+          "options": [{
+            "value": "选项1"
+          }, {
+            "value": "选项2"
+          }, {
+            "value": "选项3"
+          }],
+          "filterable": false,
+          "optionDataType": 1,
+          "interfaceMethod": "/system/sizeRule/list",
+          "interfaceParam": "{}",
+          "interfaceId": 1649919179000,
+          "resList": "data.records",
+          "interfaceType": "get",
+          "tipFont": "",
+          "dictKey": "",
+          "props": {
+            "value": "ruleId",
+            "label": "ruleName"
+          }
+        },
+        "key": "1649919179000_36995",
+        "model": "sizeRuleName",
+        // "rules": [{
+        //   "message": "请输入字符串类型数据"
+        // }]
+      }]
+    }, {
+      "span": 16,
+      "list": [{
+        "type": "input",
+        "icon": "icon-input",
+        "name": "备注说明",
+        "flag": 0,
+        "options": {
+          "clearable": false,
+          "showText": false,
+          "width": "100%",
+          "defaultValue": "",
+          "required": false,
+          "dataType": "string",
+          "maxlength": "",
+          "minlength": "",
+          "validator": "",
+          "pattern": "",
+          "patternTips": "",
+          "placeholder": "",
+          "disabled": true,
+          "hide": false,
+          "tipFont": "",
+          "mouseTips": "",
+          "borderRadius": "no"
+        },
+        "key": "1634284667000_26221",
+        "model": "remark",
+        "rules": []
+      }]
+    }],
+    "options": {
+      "gutter": 0,
+      "justify": "start",
+      "align": "top"
+    },
+    "key": 1634284637200,
+    "model": "grid_1634284637000",
+    "rules": []
+  }, ],
+  "config": {
+    "id": "form_1634280740000",
+    "labelWidth": 130,
+    "labelPosition": "right",
+    "size": "medium",
+    "column": "column",
+    "formName": "表单组件"
+  }
+};
+const operationTableColumn = [{
+  label: '物料编号888',
+  prop: 'number'
+}, {
+  label: '物料/物料名称',
+  prop: 'name'
+}, {
+  label: '颜色',
+  prop: 'color'
+}, {
+  label: '尺码',
+  prop: 'size'
+}, {
+  label: '单位',
+  prop: 'unit'
+}, {
+  label: '单价',
+  prop: 'price'
+}, {
+  label: '数量',
+  prop: 'amount'
+}, {
+  label: '下单人',
+  prop: 'buyer'
+}, ];
+const operationTableData = [{
+  number: 'CG20210107001',
+  name: '10475A9',
+  color: '红色',
+  size: 'L',
+  unit: 'TEN',
+  price: '10',
+  amount: '10000',
+  buyer: '王XX',
+}, {
+  number: 'CG20210107002',
+  name: '10475A9',
+  color: '灰色',
+  size: 'XL',
+  unit: 'TEN',
+  price: '10',
+  amount: '20000',
+  buyer: '王XX',
+}, {
+  number: 'CG20210107003',
+  name: '10475A9',
+  color: '黄色',
+  size: 'XXL',
+  unit: 'TEN',
+  price: '10',
+  amount: '30000',
+  buyer: '王XX',
+}];
+const tabArr = [{
+  label: '产品参数',
+  name: 'one',
+  columns: [{
+    label: '物料组',
+    prop: 'tsParaGroup'
+  }, {
+    label: '计编号',
+    prop: 'tsParaCalcNo'
+  }, {
+    label: '材料批次',
+    prop: 'tsParaBatchTimes'
+  }, {
+    label: '批号',
+    prop: 'tsParaBatchNo'
+  }, {
+    label: '成衣名称',
+    prop: 'tsParaProductName'
+  }, {
+    label: '成衣货号',
+    prop: 'tsParaProductNo'
+  }, {
+    label: '颜色类型',
+    prop: 'tsParaColorType'
+  }, {
+    label: '尺寸范围',
+    prop: 'tsParaSizeRange'
+  }, ],
+  tableData: []
+}, {
+  label: '产品引用',
+  name: 'two',
+  columns: [{
+    label: '代用',
+    prop: 'number'
+  }, {
+    label: '产品编号',
+    prop: 'goodsCode'
+  }, {
+    label: '产品名称',
+    prop: 'goodsName'
+  }, {
+    label: '版本编号',
+    prop: 'bomVersion'
+  }, ],
+  tableData: []
+}, {
+  label: 'BOM多级引用',
+  name: 'three',
+  columns: [{
+    label: 'BOM数',
+    prop: 'number'
+  }, {
+    label: '材料货号',
+    prop: 'number'
+  }, {
+    label: '部件或材料名称',
+    prop: 'number'
+  }, {
+    label: '上层编号',
+    prop: 'number'
+  }, {
+    label: '上层名称',
+    prop: 'number'
+  }, {
+    label: '单件用量',
+    prop: 'number'
+  }, {
+    label: '单位',
+    prop: 'number'
+  }, ],
+  tableData: []
+}, {
+  label: '计划引用',
+  name: 'four',
+  columns: [{
+    label: '上线日期',
+    prop: 'tsLineTime'
+  }, {
+    label: '完成日期',
+    prop: 'tsFinishTime'
+  }, {
+    label: '产品编号',
+    prop: 'tsGoodsCode'
+  }, {
+    label: '产品名称',
+    prop: 'tsGoodsName'
+  }, {
+    label: '色号/颜色',
+    prop: 'tsColorCodeName'
+  }, {
+    label: '尺码',
+    prop: 'tsSizeCodeName'
+  }, {
+    label: '单位',
+    prop: 'tsUnit'
+  }, {
+    label: '计划数量',
+    prop: 'tsPlanNum'
+  }, ],
+  tableData: []
+}, {
+  label: '图纸图片',
+  name: 'five',
+  columns: [{
+    label: '顺序',
+    prop: 'number'
+  }],
+  tableData: []
+}, {
+  label: '技术文件',
+  name: 'six',
+  columns: [{
+    label: '文件编号',
+    prop: 'tsFileCode'
+  }, {
+    label: '文件名称',
+    prop: 'tsFileName'
+  }, {
+    label: '文件版本',
+    prop: 'tsFileVersion'
+  }, {
+    label: '创建人',
+    prop: 'tsCreatePerson'
+  }, {
+    label: '创建时间',
+    prop: 'tsCreateTime'
+  }, ],
+  tableData: []
+}, {
+  label: '历史名称',
+  name: 'seven',
+  columns: [{
+    label: '历史名称',
+    prop: 'tsHistoryName'
+  }, {
+    label: '修改人名',
+    prop: 'tsUpdatePerson'
+  }, {
+    label: '修改时间',
+    prop: 'tsUpdateTime'
+  }, ],
+  tableData: []
+}, {
+  label: '物料描述',
+  name: 'eight',
+  columns: [{
+    label: '项目',
+    prop: 'tsProject'
+  }, {
+    label: '重要程度',
+    prop: 'tsDesLevel'
+  }, {
+    label: '项目描述',
+    prop: 'tsDesProject'
+  }, {
+    label: '必填',
+    prop: 'tsBeFill'
+  }, {
+    label: '必选',
+    prop: 'tsBeChoice'
+  }, {
+    label: '图片',
+    prop: 'tsPhoto',
+    type: "image"
+  }, {
+    label: '操作员名',
+    prop: 'tsCreatePerson'
+  }, {
+    label: '操作时间',
+    prop: 'tsCreateTime'
+  }, ],
+  tableData: []
+}, ];
+export {
+  columns,
+  operationTableColumn,
+  operationTableData,
+  BOMForm,
+  tabArr
+};

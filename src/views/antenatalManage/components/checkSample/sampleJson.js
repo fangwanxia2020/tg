@@ -1,0 +1,139 @@
+export function getAddJson() {
+  return {
+    "list": [{
+      "type": "radio",
+      "icon": "icon-radio-active",
+      "name": "检查结果",
+      "flag": 0,
+      "options": {
+        "borderRadius": "no",
+        "inline": true,
+        "defaultValue": "1",
+        "showLabel": true,
+        "options": [{
+          "value": "1",
+          "label": "通过"
+        }, {
+          "value": "2",
+          "label": "不通过"
+        }],
+        "required": true,
+        "width": "",
+        "optionDataType": 1,
+        "interfaceMethod": "/system/SysDictData/getChildrenItemsByDictType",
+        "interfaceParam": "{\"dictType\":\"sys_tenant_type\"}",
+        "interfaceId": 1640932170000,
+        "resList": "data.records",
+        "interfaceType": "get",
+        "tipFont": "",
+        "dictKey": "",
+        "props": {
+          "value": "dictValue",
+          "label": "dictLabel"
+        },
+        "disabled": false
+      },
+      "key": 1640921725000,
+      "model": "checkStatus",
+      "rules": [{
+        "required": true,
+        "message": "检查结果不能为空"
+      }]
+    }, {
+      "type": "slot",
+      "icon": "icon-wenzishezhi-",
+      "name": "",
+      "flag": 1,
+      "options": {
+        "width": "100%",
+        "slotName": "slotReason",
+        "defaultValue": [],
+        "required": false,
+        "validator": "",
+        "hideLabel": false
+      },
+      "key": 1640931097000,
+      "model": "checkReason",
+      "rules": []
+    }, {
+      "type": "imgupload",
+      "icon": "icon-tupian",
+      "name": "检查照片",
+      "flag": 0,
+      "options": {
+        "borderRadius": "no",
+        "maxSize": 5,
+        "isAvatar": false,
+        "canUploadFile": false,
+        "uploadFileText": "点击上传",
+        "defaultValue": [],
+        "listWidth": 100,
+        "listHeight": 100,
+        "width": "",
+        "disabled": false,
+        "length": 20,
+        "isDelete": true,
+        "required": false,
+        "tipFont": "",
+        "isShow": true,
+        "action": "/system/file/upload",
+        "resFormat": "data"
+      },
+      "key": 1640921912000,
+      "model": "photos",
+      "rules": []
+    }, {
+      "type": "textarea",
+      "icon": "icon-diy-com-textarea",
+      "name": "封样过程记录",
+      "flag": 0,
+      "options": {
+        "borderRadius": "no",
+        "width": "100%",
+        "defaultValue": '',
+        "row": 2,
+        "required": false,
+        "disabled": false,
+        "pattern": "",
+        "minlength": "",
+        "patternTips": "",
+        "tipFont": "",
+        "maxlength": "140",
+        "placeholder": ""
+      },
+      "key": 1640921949000,
+      "model": "processRecording",
+      "rules": []
+    }, {
+      "type": "textarea",
+      "icon": "icon-diy-com-textarea",
+      "name": "检查备注",
+      "flag": 0,
+      "options": {
+        "borderRadius": "no",
+        "width": "100%",
+        "defaultValue": '',
+        "row": 2,
+        "required": false,
+        "disabled": false,
+        "pattern": "",
+        "minlength": "",
+        "patternTips": "",
+        "tipFont": "",
+        "maxlength": "140",
+        "placeholder": ""
+      },
+      "key": 1640921949010,
+      "model": "checkRemar",
+      "rules": []
+    }],
+    "config": {
+      "id": "form_1640921681000",
+      "labelWidth": 130,
+      "labelPosition": "right",
+      "size": "medium",
+      "column": "column",
+      "formName": "表单组件"
+    }
+  }
+}
